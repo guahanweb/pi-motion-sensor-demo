@@ -1,1 +1,0 @@
-docker build -t guahanweb/pi-motion-sensor-demo:$(cat version) .
