@@ -37,6 +37,23 @@ function init() {
     .y1(d => y(d.y))
     .curve(d3.curveCardinal);
 
+  // Draw the grid
+  // x axis
+  const grid_size = 20;
+
+  for (let i = 0; i < max; i += grid_size) {
+    graph.append('path').datum([{ x: i, y: 0 }, { x: i, y: height }])
+      .attr('class', 'gridlines')
+      .attr('d', gridLines);
+  }
+
+  // y axis
+  for (let i = 0; i < height; i += grid_size) {
+    graph.append('path').datum([{ x: 0, y: i }, { x: width, y: i }])
+      .attr('class', 'gridlines')
+      .attr('d', gridLines);
+  }
+
   const occupied = graph.append('g')
     .attr('width', width)
     .attr('height', 20)
@@ -74,23 +91,6 @@ function init() {
     .attr('class', 'x-axis')
     .attr('transform', 'translate(0, ' + height + ')')
     .call(xAxis);
-
-  // Draw the grid
-  // x axis
-  const grid_size = 20;
-
-  for (let i = 0; i < max; i += grid_size) {
-    graph.append('path').datum([{ x: i, y: 0 }, { x: i, y: height }])
-      .attr('class', 'gridlines')
-      .attr('d', gridLines);
-  }
-
-  // y axis
-  for (let i = 0; i < height; i += grid_size) {
-    graph.append('path').datum([{ x: 0, y: i }, { x: width, y: i }])
-      .attr('class', 'gridlines')
-      .attr('d', gridLines);
-  }
 
   // append holder for our chart lines
   const path = graph.append('path');
