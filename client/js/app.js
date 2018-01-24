@@ -1,3 +1,8 @@
 'use strict';
 
-console.log('there');
+import { RealtimeFeedback } from './graphs';
+
+window.onload = function () {
+  // set up graphs
+  RealtimeFeedback.init();
+};
