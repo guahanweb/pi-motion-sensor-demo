@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "NODE_ENV=production node index",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm-run-all -p -r -l watch:css watch:assets watch:js start",

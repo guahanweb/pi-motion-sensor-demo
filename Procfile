@@ -1,1 +1,1 @@
-app: npm run build && node start
+app: node start
