@@ -27,6 +27,7 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 app.use(express.static('dist'));
+app.use(express.static('client/public'));
 
 app.get('/status', function (req, res) {
   res.json({ status: 'ok' });
