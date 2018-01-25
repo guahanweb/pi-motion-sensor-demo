@@ -32,7 +32,7 @@ function init() {
 
   let sensor_state = 0;
 
-  const protocol = window.location.protocol == 'https' ? 'wss' : 'ws';
+  const protocol = window.location.protocol == 'https:' ? 'wss' : 'ws';
 
   // Set up websocket
   const ws = new WebSocket(protocol + '://' + window.location.host);
