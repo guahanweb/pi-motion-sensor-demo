@@ -16,8 +16,22 @@
 
         .line {
             fill: none;
-            stroke: #e74c3c;
+            stroke: #008fc4;
             stroke-width: 2;
+
+            &.activity {
+                stroke: #c00;
+                opacity: 0.5;
+            }
+        }
+
+        .area {
+            fill: #008fc4;
+            opacity: 0.2;
+
+            &.activity {
+                fill: #c00;
+            }
         }
 
         .status {
@@ -29,11 +43,13 @@
             &.occupied {
                 .value { stroke: #f00; }
                 text { fill: #c00; font-weight: bold; }
+                rect { fill: #c00; opacity: 0.2; }
             }
 
             &.vacant {
-                .value { stroke: #0f0; }
+                .value { stroke: #0c0; }
                 text { fill: #0c0; font-weight: bold; }
+                rect { fill: #0c0; opacity: 0.2; }
             }
         }
     }

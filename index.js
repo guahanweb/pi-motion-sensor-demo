@@ -41,14 +41,23 @@ const server = app.listen(port, function () {
 
 const ws = new WebSocket({ httpServer: server });
 
+let connections = [];
 ws.on('request', function (request) {
-    let connection = request.accept(null, request.origin);
+  const connection = request.accept(null, request.origin);
+  connections.push(connection);
 
-    connection.on('message', function (message) {
-        console.log('GOT:', message);
-    });
+  connection.on('message', function (message) {
+    console.log('GOT:', message.utf8Data);
 
-    connection.on('close', function (connection) {
-        // Close user connection
+    // poor man's broadcast
+    // ideally, we would have one inbound for Pi connections and
+    // one outbound for web connections.
+    connections.forEach(conn => {
+      conn.send(message.utf8Data);
     });
+  });
+
+  connection.on('close', function (connection) {
+      // Close user connection
+  });
 });
