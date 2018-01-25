@@ -32,8 +32,10 @@ function init() {
 
   let sensor_state = 0;
 
+  const protocol = window.location.protocol == 'https' ? 'wss' : 'ws';
+
   // Set up websocket
-  const ws = new WebSocket('ws://' + window.location.host);
+  const ws = new WebSocket(protocol + '://' + window.location.host);
 
   ws.onerror = function () {
     console.error('[WS] Connection error');
